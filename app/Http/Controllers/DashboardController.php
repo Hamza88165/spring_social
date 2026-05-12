@@ -17,7 +17,7 @@ class DashboardController extends Controller
                                    ->whereDate('scheduled_at', today())
                                    ->count();
         $unreadMessages      = Message::where('is_read', false)->count();
-        $recentClients       = Client::latest()->take(5)->get();
+        $recentClients = Client::with('socialAccounts')->latest()->take(5)->get();
 
         return view('dashboard', compact(
             'totalClients',
