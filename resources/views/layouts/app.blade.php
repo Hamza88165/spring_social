@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>AYMD — {{ $title ?? 'Dashboard' }}</title>
+    <title>AYMD — @yield('title', 'Dashboard')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
     <style>
@@ -299,6 +299,7 @@
             z-index: 999;
         }
     </style>
+    @stack('styles')
 </head>
 <body>
 
@@ -383,7 +384,7 @@
 
     {{-- TOPBAR --}}
     <div id="topbar">
-        <div class="topbar-title">{{ $title ?? 'Tableau de bord' }}</div>
+        <div class="topbar-title">@yield('title', 'Tableau de bord')</div>
         <div class="topbar-right">
             <button class="topbar-icon-btn"><i class="bi bi-bell"></i></button>
             <button class="topbar-icon-btn"><i class="bi bi-search"></i></button>
@@ -418,11 +419,11 @@
             </div>
         @endif
 
-        {{ $slot }}
+        @yield('content')
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-{{ $scripts ?? '' }}
+@stack('scripts')
 </body>
 </html>

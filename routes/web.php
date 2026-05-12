@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClientController;
 
+
 // Redirect root to dashboard or login
 Route::get('/', function () {
     return redirect()->route('dashboard');
